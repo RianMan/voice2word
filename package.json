@@ -1,0 +1,22 @@
+{
+  "name": "baiduyuyin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "baidu-aip-sdk": "^2.4.6",
+    "crypto-js": "^3.1.9-1",
+    "log4node": "^0.1.6",
+    "mime-types": "^2.1.26",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "tencentcloud-sdk-nodejs": "^4.0.56"
+  }
+}

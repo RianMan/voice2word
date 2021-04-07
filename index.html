@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="file" name="选择音频文件" id="fileInput">
+        <button>上传文件</button>
+    </div>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script>
+        var fileInput = document.querySelector('#fileInput');
+        // 设置APPID/AK/SK
+        var APP_ID = "18940546";
+        var API_KEY = "fhVunxn9p9IsOZEaiMx5wrll";
+        var SECRET_KEY = "hpnbFaXUk6IefHeXpcWtCWNSG6SslLtv";
+        const getTokenurl = `https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=${API_KEY}&client_secret=${SECRET_KEY}`;
+        const getVocieUrl = 'https://vop.baidu.com/pro_api';
+
+
+        fileInput.onchange = function () {
+
+            var file = this.files[0];
+
+            var reader = new FileReader();
+
+            reader.readAsDataURL(file);
+
+            reader.onload = function () {
+
+                console.log(reader.result);
+
+            };
+
+        };
+
+        const handleUpload = (token) => {
+            let voice = fs.readFileSync('./1.wav');
+            let voiceBuffer = new Buffer(voice).toString('base64');
+            let statObj = fs.statSync('./1.wav');
+            let base64 = 'data:' + mineType.lookup('./1.wav') + ';base64,' + voiceBuffer;
+            // console.log(base64,'base64')
+            const sendObj = {
+                format: 'wav',
+                rate: 16000,
+                channel: 1,
+                cuid: 'baidu_workshop',
+                token,
+                dev_pid: 80001,
+                speech: base64,
+                len: statObj.size,
+            }
+            return sendObj;
+        }
+
+        const handleRequest = async () => {
+            let response = await axios.get(getTokenurl);
+            let bodyObj = response.data;
+            if (bodyObj.access_token) {
+                access_token = bodyObj.access_token;
+            }
+            let sendObj = handleUpload(access_token);
+            getVoiceData(sendObj);
+        }
+
+        const getVoiceData = async (data) => {
+            let response = await axios({
+                method: 'post',
+                url: getVocieUrl,
+                data,
+                headers: {
+                    'User-Agent': 'request',
+                    "Content-Type": "application/json"
+                }
+            });
+            console.log(response.data, 'response');
+        }
+
+
+        // handleRequest();
+
+
+    </script>
+</body>
+
+</html>
