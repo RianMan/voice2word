@@ -12,9 +12,9 @@ const config = {
     // 请求地址
     hostUrl: "http://raasr.xfyun.cn/api/",
     // 在控制台-我的应用-语音转写获取
-    appId: "60580661",
+    appId: "2cb7526f",
     // 在控制台-我的应用-语音转写获取
-    secretKey: "fae6e62ac48c1fece317355e3656a763",
+    secretKey: "aca29543178c63f861293131c7604414",
     // 音频文件地址
 }
 
@@ -25,6 +25,7 @@ const readFile = async () => {
     console.log(baseDir,'baseDir')
     let waveFileNameArr = await readdirPromise(baseDir);
     let waveFilePathLists = waveFileNameArr.map(f => getFile(f));
+    waveFilePathLists = waveFilePathLists.filter(v => v.endsWith('.wav'))
     writeText(waveFilePathLists[0])
 }
 

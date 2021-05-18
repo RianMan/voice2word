@@ -19,9 +19,9 @@ const config = {
     // 请求地址
     hostUrl: "http://raasr.xfyun.cn/api/",
     // 在控制台-我的应用-语音转写获取
-    appId: "2cb7526f",
+    appId: "436b32a1",
     // 在控制台-我的应用-语音转写获取
-    secretKey: "aca29543178c63f861293131c7604414",
+    secretKey: "0459fe9861395e28060dc735967bd8ca",
     // 音频文件地址
     filePath: "./1.wav"
 }
