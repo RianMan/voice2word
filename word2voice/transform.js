@@ -1,15 +1,3 @@
-/* Created by iflytek on 2020/03/01.
- *
- * 运行前：请先填写 appid、apiSecret、apiKey
- * 
- * 在线语音合成调用demo
- * 此demo只是一个简单的调用示例，不适合用到实际生产环境中
- *
- * 在线语音合成 WebAPI 接口调用示例 接口文档（必看）：https://www.xfyun.cn/doc/tts/online_tts/API.html
- * 错误码链接：
- * https://www.xfyun.cn/document/error-code （code返回错误码时必看）
- * 
- */
 const CryptoJS = require('crypto-js')
 const WebSocket = require('ws')
 var log = require('log4node')
@@ -23,11 +11,11 @@ const config = {
     hostUrl: "wss://tts-api.xfyun.cn/v2/tts",
     host: "tts-api.xfyun.cn",
     //在控制台-我的应用-在线语音合成（流式版）获取
-    appid: "2cb7526f",
+    appid: "1b646207",
     //在控制台-我的应用-在线语音合成（流式版）获取
-    apiSecret: "OWRjYjliODY4MWM0Y2NhMmQ3NmEwY2Q1",
+    apiSecret: "ZjNlNzk0NWYwZDQ2ZmU3MjE1MTVjMmJh",
     //在控制台-我的应用-在线语音合成（流式版）获取
-    apiKey: "d8c2dd0c25c221321fbe13f207cf0a44",
+    apiKey: "fa1cc98982b9de71ea351f142f8e0d3f",
     text,
     uri: "/v2/tts",
 }
@@ -109,8 +97,9 @@ function send() {
         "business": {
             "aue": "raw",
             "auf": "audio/L16;rate=16000",
-            "vcn": "x2_guange",
+            "vcn": "x2_xiaoxi",
             "tte": "UTF8",
+            // "tte": "unicode",
         },
         // 填充data
         "data": {
